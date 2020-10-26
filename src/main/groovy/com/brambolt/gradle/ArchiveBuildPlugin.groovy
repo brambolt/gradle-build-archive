@@ -42,6 +42,7 @@ import static com.brambolt.gradle.PluginBuildPlugin.configurePlugins
 import static com.brambolt.gradle.PluginBuildPlugin.configureJavaPublishing
 import static com.brambolt.gradle.PluginBuildPlugin.configureRepositories
 import static com.brambolt.gradle.PluginBuildPlugin.configureSourceJarTask
+import static com.brambolt.gradle.PluginBuildPlugin.logProperties
 
 import static com.brambolt.gradle.velocity.tasks.Velocity.DEFAULT_VELOCITY_INPUT_PATH
 import static com.brambolt.gradle.velocity.tasks.Velocity.DEFAULT_VELOCITY_TASK_NAME
@@ -113,23 +114,6 @@ class ArchiveBuildPlugin implements Plugin<Project> {
     configureArtifactory(project)
     configureBintray(project)
     configureDefaultTasks(project)
-  }
-
-  /**
-   * Logs the required and derived project properties.
-   * @param project The project to configure
-   */
-  void logProperties(Project project) {
-    project.logger.info("""
-  Artifact id:          ${project.artifactId}
-  Branch:               ${project.vcsBranch}
-  Commit:               ${project.vcsCommit}
-  Description:          ${project.description}
-  Group:                ${project.group}
-  Name:                 ${project.name}
-  VCS URL:              ${project.vcsUrl}
-  Version:              ${project.version}
-""")
   }
 
   static Velocity configureVelocityTask(Project project, String taskName, String inputPath, File outputDir, Map<String, Object> context, List<String> taskDependencies) {
