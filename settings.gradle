@@ -10,4 +10,4 @@ pluginManagement {
   }
 }
 
-rootProject.name = 'gradle-build-archive'
+rootProject.name = 'brambolt-gradle-build-archive'
